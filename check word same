@@ -1,0 +1,41 @@
+<?php
+
+function setInput($stringArr){
+    
+    $data = $stringArr;
+    
+    for($i = 0; $i < count($data); $i++){
+        $pecahData[$i] = explode(',',$data[$i]);
+    }
+    
+    for($i = 0; $i < count($data); $i++){
+        sort($pecahData[$i]);
+        
+        for($j = 0; $j < count($pecahData[$i]); $j++){
+            for($k = 0; $k < count($pecahData[$i]); $k++){
+              if( $pecahData[$i][$j] == $pecahData[$j][$k]){
+                 $check[$i][$j] = $pecahData[$i][$j];
+              }
+            }
+        }
+    }
+    
+    
+    
+    for($n = 0; $n < count($data); $n++){
+        
+        if(count($check[$n]) == 3){
+            $joinData = $data[$n];
+            
+            $exp = explode(',',$joinData);
+            
+            $imp = implode('',$exp);
+            
+            echo($imp.' ');
+        }
+        
+    }
+
+}    
+
+setInput(['b,a,t','c,a,t','a,c,t','c,a,b','t,a,c']);
